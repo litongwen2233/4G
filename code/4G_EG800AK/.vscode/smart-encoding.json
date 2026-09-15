@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "files": {
+    "CMakeLists.txt": "utf8",
+    "EG800AK/CMakeLists.txt": "utf8",
+    "EG800AK/EG800AK.c": "gb2312",
+    "EG800AK/MQTT_client.c": "utf8",
+    "text.c": "gb2312",
+    "Window_serial/CMakeLists.txt": "utf8",
+    "Window_serial/Serial.c": "gb2312",
+    "Window_serial/Serial.h": "gb2312"
+  }
+}

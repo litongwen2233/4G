@@ -4,11 +4,13 @@
 #include<windows.h>
 #include <stdint.h>
 #include <stdbool.h>
+#include <stdio.h>
+#include <string.h>
 
-void Sertial_open(char *serial_name, DWORD baud_rate,char *Write_buff,char *Read_buff);
+bool Sertial_open(char *serial_name, DWORD baud_rate,char *Write_buff,char *Read_buff);
 
-void Serial_write(uint16_t len);
+int Serial_write(uint16_t len);
 
-void Serial_read(void);
+int Serial_read(void);
 
 #endif

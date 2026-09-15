@@ -1,5 +1,6 @@
 #include"EG800AK/EG800AK.h"
 #include"EG800AK/MQTT_client.h"
+#include"Window_serial/Serial.h"
 
 uint8_t Buff[256]   = {0};
 uint8_t R_Buff[256] = {0};
@@ -35,10 +36,10 @@ void LCD_scanf(char *buff,uint16_t len)
     printf("当前回复内容：%s\n",R_Buff);
     mqtt_Read_Flag(len);
 }
-int main()
+void MQTT_init(void)
 {
     // mqtt_data._4G_date.
-    mqtt_data._4G_date.platfromSendbuffFunction = LCD_Printf;
+    mqtt_data._4G_date.platfromSendbuffFunction = Serial_write;
     mqtt_data._4G_date.platformSendBuff = Buff;
     mqtt_data._4G_date.platformReadBuff = R_Buff;
     mqtt_register(&mqtt_data);
@@ -61,5 +62,15 @@ int main()
     mqtt_Handle();
     mqtt_Handle();
     mqtt_Handle();
-    // while(1);
+}
+int main()
+{
+    Sertial_open("COM4",115200,Buff,R_Buff);
+    Buff[0] = 'A';
+    Buff[1] = 'T';
+    Buff[2] = '\r';
+    Buff[3] = '\n';
+    Serial_write(4);
+    Serial_read();
+
 }
